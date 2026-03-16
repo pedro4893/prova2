@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abiogênese x Biogênese - A origem da vida</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a3e2f 0%, #2a5a44 100%);
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b5a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: #0f2b1f;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background-color: #2a5a44;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 40px 0;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            color: #1a3e2f;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #c9a87c;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #2a5a44;
+            font-size: 1.5em;
+            margin: 20px 0 10px;
+        }
+
+        .teoria-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .teoria-card {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid;
+        }
+
+        .abiogênese {
+            border-left-color: #c9a87c;
+        }
+
+        .biogênese {
+            border-left-color: #1a3e2f;
+        }
+
+        .cientista-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .cientista-icone {
+            width: 100px;
+            height: 100px;
+            background: #1a3e2f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5em;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            padding: 20px;
+            margin: 20px 0;
+            background: #f9f9f9;
+            border-radius: 10px;
+            position: relative;
+            border-left: 4px solid #c9a87c;
+        }
+
+        .timeline-ano {
+            font-weight: bold;
+            color: #1a3e2f;
+            font-size: 1.3em;
+        }
+
+        .experimento {
+            background: #e8f0ed;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+
+        .experimento-img {
+            background: #dde5e1;
+            height: 200px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2a5a44;
+            font-size: 1.2em;
+        }
+
+        .quiz-container {
+            background: #1a3e2f;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .quiz-pergunta {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+
+        .quiz-opcoes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .quiz-opcao {
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .quiz-opcao:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .glossario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .glossario-item {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .glossario-item h4 {
+            color: #1a3e2f;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        footer {
+            background: #0f2b1f;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .btn {
+            background: #c9a87c;
+            color: #1a3e2f;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .btn:hover {
+            background: #b8965c;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .teoria-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cientista-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .cientista-icone {
+                margin: 0 auto;
+            }
+            
+            nav a {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🔬 Abiogênese x Biogênese</h1>
+        <p>Descubra a fascinante jornada científica que mudou para sempre nossa compreensão sobre a origem da vida</p>
+    </header>
+
+    <nav>
+        <a href="#home">Início</a>
+        <a href="#abiogenese">Abiogênese</a>
+        <a href="#biogenese">Biogênese</a>
+        <a href="#timeline">Linha do Tempo</a>
+        <a href="#experimentos">Experimentos</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#glossario">Glossário</a>
+    </nav>
+
+    <div class="container">
+        <section id="home">
+            <h2>O Grande Debate Científico</h2>
+            <p style="font-size: 1.2em; line-height: 1.8;">Por mais de 2000 anos, a humanidade acreditou que a vida podia surgir espontaneamente da matéria inanimada. Esta crença, conhecida como <strong>abiogênese</strong> ou geração espontânea, foi gradualmente desafiada por experimentos cada vez mais rigorosos que culminaram na estabelecimento da <strong>biogênese</strong>: a vida só pode surgir de vida pré-existente.</p>
+            
+            <div class="teoria-grid">
+                <div class="teoria-card abiogênese">
+                    <h3>🌱 Abiogênese</h3>
+                    <p>A vida surge naturalmente de matéria não-viva. Exemplo histórico: acreditava-se que ratos nasciam de trapos sujos e camisas suadas.</p>
+                </div>
+                <div class="teoria-card biogênese">
+                    <h3>🧬 Biogênese</h3>
+                    <p>Um organismo vivo só pode surgir a partir de outro organismo vivo pré-existente. Princípio fundamental da biologia moderna.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="abiogenese">
+            <h2>🌿 Abiogênese - A Geração Espontânea</h2>
+            <p>A teoria da abiogênese, também chamada de geração espontânea, propunha que seres vivos poderiam surgir repentinamente de matéria inanimada. Esta ideia foi aceita por mais de dois milênios, desde a Grécia Antiga até o século XIX.</p>
+            
+            <div class="cientista-card">
+                <div class="cientista-icone">🏛️</div>
+                <div>
+                    <h3>Aristóteles (384-322 a.C.)</h3>
+                    <p>O filósofo grego formalizou a teoria da geração espontânea, afirmando que pulgas surgem de matéria em putrefação e vermes de lama. Sua autoridade intelectual manteve a teoria viva por séculos.</p>
+                </div>
+            </div>
+
+            <div class="cientista-card">
+                <div class="cientista-icone">🧪</div>
+                <div>
+                    <h3>John Needham (1713-1781)</h3>
+                    <p>Cientista britânico que realizou experimentos com caldos nutritivos. Após ferver e selar os frascos, ainda observou microrganismos, interpretando isso como evidência da abiogênese.</p>
+                </div>
+            </div>
+
+            <div class="experimento">
+                <h3>Exemplos históricos de "geração espontânea"</h3>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>📌 Ratos nasceriam de trapos sujos e grãos de trigo</li>
+                    <li>📌 Moscas surgiriam da carne em decomposição</li>
+                    <li>📌 Sapos nasceriam da lama do rio Nilo</li>
+                    <li>📌 Escorpiões surgiriam de manjericão amassado</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="biogenese">
+            <h2>🧪 Biogênese - A Vida da Vida</h2>
+            <p>A biogênese é o princípio fundamental de que organismos vivos somente se originam de outros organismos vivos. Esta teoria substituiu a abiogênese através de experimentos cruciais.</p>
+
+            <div class="cientista-card">
+                <div class="cientista-icone">🪰</div>
+                <div>
+                    <h3>Francesco Redi (1626-1697)</h3>
+                    <p>Médico italiano que realizou um experimento simples mas revolucionário: colocou carne em potes abertos e fechados. Apenas nos potes abertos surgiram larvas, demonstrando que moscas eram necessárias.</p>
+                </div>
+            </div>
+
+            <div class="cientista-card">
+                <div class="cientista-icone">🔥</div>
+                <div>
+                    <h3>Lazzaro Spallanzani (1729-1799)</h3>
+                    <p>Cientista italiano que criticou Needham. Ferveu caldos por mais tempo e selou os frascos hermeticamente, não observando vida. Seus críticos alegaram que o aquecimento destruía o "princípio vital".</p>
+                </div>
+            </div>
+
+            <div class="cientista-card">
+                <div class="cientista-icone">🦢</div>
+                <div>
+                    <h3>Louis Pasteur (1822-1895)</h3>
+                    <p>O golpe final na abiogênese! Pasteur criou frascos com pescoço de cisne, que permitiam entrada de ar mas retinham microrganismos. Os caldos permaneciam estéreis. Ao inclinar o frasco, permitindo contato com poeira, a vida surgia.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline">
+            <h2>📅 Linha do Tempo</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-ano">~400 a.C.</span>
+                    <p><strong>Aristóteles</strong> formaliza a teoria da geração espontânea.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-ano">1668</span>
+                    <p><strong>Francesco Redi</strong> demonstra que larvas não surgem espontaneamente em carne.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-ano">1745</span>
+                    <p><strong>John Needham</strong> realiza experimentos que parecem confirmar a abiogênese.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-ano">1768</span>
+                    <p><strong>Lazzaro Spallanzani</strong> contesta Needham com experimentos mais rigorosos.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-ano">1861</span>
+                    <p><strong>Louis Pasteur</strong> publica seus experimentos definitivos com frascos de pescoço de cisne.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-ano">Atualidade</span>
+                    <p><strong>Abiogênese química</strong> - estudo da origem da vida na Terra primitiva.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experimentos">
+            <h2>🔬 Experimentos Clássicos</h2>
+            
+            <div class="experimento">
+                <h3>Experimento de Redi (1668)</h3>
+                <div class="experimento-img">
+                    🏺 Pote aberto: larvas aparecem | 🏺 Pote fechado: sem larvas
+                </div>
+                <p>Redi colocou carne em três frascos: um aberto, um coberto com gaze e um selado. Apenas no frasco aberto as moscas depositaram ovos, gerando larvas. Isso refutou a ideia de que larvas surgiam espontaneamente.</p>
+            </div>
+
+            <div class="experimento">
+                <h3>Experimento de Pasteur (1861)</h3>
+                <div class="experimento-img">
+                    🧪 Frasco com pescoço de cisne - caldo permanece estéril
+                </div>
+                <p>Pasteur usou frascos com gargalo longo e curvo (pescoço de cisne). O caldo nutritivo era fervido e, com o gargalo curvo, o ar entrava mas os microrganismos ficavam retidos na curvatura. O caldo permanecia estéril indefinidamente, a menos que o frasco fosse inclinado para o caldo atingir o pescoço.</p>
+            </div>
+        </section>
+
+        <section id="quiz">
+            <h2>📝 Teste seus conhecimentos</h2>
+            <div class="quiz-container">
+                <div class="quiz-pergunta">
+                    <p><strong>1. Quem realizou o experimento com frascos de pescoço de cisne?</strong></p>
+                    <div class="quiz-opcoes">
+                        <div class="quiz-opcao" onclick="alert('Resposta errada! Tente novamente.')">Francesco Redi</div>
+                        <div class="quiz-opcao" onclick="alert('Parabéns! Resposta correta!')">Louis Pasteur</div>
+                        <div class="quiz-opcao" onclick="alert('Resposta errada! Tente novamente.')">Aristóteles</div>
+                        <div class="quiz-opcao" onclick="alert('Resposta errada! Tente novamente.')">John Needham</div>
+                    </div>
+                </div>
+
+                <div class="quiz-pergunta">
+                    <p><strong>2. O que é abiogênese?</strong></p>
+                    <div class="quiz-opcoes">
+                        <div class="quiz-opcao" onclick="alert('Correto! Abiogênese é exatamente isso.')">A vida surge de matéria não-viva</div>
+                        <div class="quiz-opcao" onclick="alert('Errado! Isso é biogênese.')">A vida surge de vida pré-existente</div>
+                        <div class="quiz-opcao" onclick="alert('Errado! Tente novamente.')">A vida surge apenas de ovos</div>
+                        <div class="quiz-opcao" onclick="alert('Errado! Tente novamente.')">A vida nunca surge</div>
+                    </div>
+                </div>
+
+                <div class="quiz-pergunta">
+                    <p><strong>3. Qual filósofo grego formalizou a teoria da geração espontânea?</strong></p>
+                    <div class="quiz-opcoes">
+                        <div class="quiz-opcao" onclick="alert('Errado!')">Sócrates</div>
+                        <div class="quiz-opcao" onclick="alert('Errado!')">Platão</div>
+                        <div class="quiz-opcao" onclick="alert('Correto! Aristóteles foi o principal defensor.')">Aristóteles</div>
+                        <div class="quiz-opcao" onclick="alert('Errado!')">Pitágoras</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="glossario">
+            <h2>📚 Glossário</h2>
+            <div class="glossario-grid">
+                <div class="glossario-item">
+                    <h4>Abiogênese</h4>
+                    <p>Teoria que defendia a origem da vida a partir de matéria bruta, inanimada. Também chamada de geração espontânea.</p>
+                </div>
+                <div class="glossario-item">
+                    <h4>Biogênese</h4>
+                    <p>Princípio segundo o qual um ser vivo só pode originar-se de outro ser vivo pré-existente.</p>
+                </div>
+                <div class="glossario-item">
+                    <h4>Geração Espontânea</h4>
+                    <p>Outro nome para abiogênese. Ideia de que organismos complexos podem surgir repentinamente de matéria não-viva.</p>
+                </div>
+                <div class="glossario-item">
+                    <h4>Esterilização</h4>
+                    <p>Processo que elimina todas as formas de vida microbiana, utilizado nos experimentos de Pasteur e Spallanzani.</p>
+                </div>
+                <div class="glossario-item">
+                    <h4>Pasteurização</h4>
+                    <p>Processo de aquecimento desenvolvido por Pasteur para eliminar microrganismos em alimentos.</p>
+                </div>
+                <div class="glossario-item">
+                    <h4>Abiogênese Química</h4>
+                    <p>Teoria moderna sobre a origem da vida na Terra primitiva, diferente da geração espontânea.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>🌍 Site educativo sobre Abiogênese e Biogênese</p>
+        <p>Desenvolvido para ajudar estudantes a compreender este importante debate científico</p>
+        <p>Referências: Redi, Spallanzani, Pasteur e a história da biologia</p>
+        <button class="btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">Voltar ao topo</button>
+    </footer>
+
+    <script>
+        // Scroll suave para os links do menu
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
